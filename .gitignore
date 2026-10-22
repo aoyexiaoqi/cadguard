@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.egg-info/
+.coverage
+.pytest_cache/
+build/
+dist/
+cadguard_demo.dxf
+cadguard_demo_report.md

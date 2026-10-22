@@ -1,0 +1,57 @@
+# CADGuard 规则配置示例 / Example rules configuration
+# 只写需要覆盖的段落和键，其余使用内置默认值。
+# Only the sections/keys you write are overridden; everything else
+# falls back to the built-in defaults (see src/cadguard/config.py).
+
+layers:
+  enabled: true
+  severity: error
+  # 图层白名单（不区分大小写）。留空 [] 则只按 pattern 判定。
+  allowed:
+    - "0"
+    - OUTLINE
+    - CENTER
+    - HIDDEN
+    - DIM
+    - TEXT
+    - TITLE
+  pattern: "^[A-Za-z0-9_\\-]+$"
+
+text_styles:
+  enabled: true
+  severity: warning
+  # 允许的字体文件名（只比 basename，不区分大小写）
+  allowed_fonts:
+    - simhei.ttf        # 黑体
+    - simsun.ttc        # 宋体
+    - gbeitc.shx        # 国标工程字（斜体）
+    - gbenor.shx        # 国标工程字（直体）
+    - txt.shx
+
+linetypes:
+  enabled: true
+  severity: warning
+  allowed:
+    - CENTER
+    - HIDDEN
+    - DASHED
+    - PHANTOM
+
+dimension_text_override:
+  enabled: true
+  severity: error       # 改数属于红线问题，保持 error
+
+duplicate_geometry:
+  enabled: true
+  severity: warning
+  precision: 6          # 坐标取整小数位；调小可容忍微小偏差
+
+title_block:
+  enabled: true
+  severity: error
+  block_names:
+    - TITLE_BLOCK
+    - GB_TITLE
+  text_markers:
+    - "图号"
+    - "DWG NO"

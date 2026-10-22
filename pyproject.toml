@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cadguard"
+version = "0.1.0"
+description = "机械 CAD 图纸（DXF）规则自动检查：图层、字体、线型、尺寸文本、重复几何与标题栏 / Rule-based DXF engineering drawing checker"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "aoyexiaoqi"}]
+requires-python = ">=3.9"
+keywords = ["dxf", "cad", "ezdxf", "drawing-check", "engineering-drawing", "quality"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Natural Language :: Chinese (Simplified)",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "ezdxf>=1.1",
+  "pyyaml>=5.4",
+]
+
+[project.optional-dependencies]
+render = ["matplotlib>=3.5"]
+test = ["pytest>=7", "pytest-cov"]
+
+[project.scripts]
+cadguard = "cadguard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/aoyexiaoqi/cadguard"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
